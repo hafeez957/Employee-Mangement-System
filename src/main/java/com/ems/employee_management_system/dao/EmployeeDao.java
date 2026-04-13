@@ -2,6 +2,7 @@ package com.ems.employee_management_system.dao;
 
 import com.ems.employee_management_system.entity.Employee;
 import com.ems.employee_management_system.repository.EmployeeRepo;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -21,5 +22,19 @@ public class EmployeeDao {
     public List<Employee> findAll(){
         return employeeRepo.findAll();
     }
+
+    public Optional<Employee> find(Integer id){
+        return employeeRepo.findById(id);
+    }
+
+    public Employee update(Employee employee){
+        return employeeRepo.save(employee);
+    }
+
+    public void delete(Integer id){
+        employeeRepo.deleteById(id);
+    }
+
+
 
 }

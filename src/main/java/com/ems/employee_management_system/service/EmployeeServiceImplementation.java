@@ -31,4 +31,28 @@ public class EmployeeServiceImplementation implements EmployeeService{
     public List<Employee> findAll() {
         return employeeDao.findAll();
     }
+
+    @Override
+    public Optional<Employee> findById(Integer id) {
+        Optional<Employee> emp=employeeDao.find(id);
+        return emp;
+    }
+
+    @Override
+    public Employee update(Employee employee) {
+
+        return employeeDao.update(employee);
+    }
+
+    @Override
+    public String delete(Integer id) {
+        Optional<Employee> emp=findById(id);
+        if(emp.isPresent()){
+            employeeDao.delete(id);
+            return "Data is deleted";
+        }else{
+            return "Invalid id";
+        }
+
+    }
 }

@@ -19,4 +19,14 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(rs,HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(InvalidIdException.class)
+    public ResponseEntity<ResponseStructure<Employee>> invalidIdExceptionHandler(InvalidIdException e){
+        ResponseStructure<Employee> rs=new ResponseStructure<>();
+        rs.setStatuscode(HttpStatus.BAD_REQUEST.value());
+        rs.setMessage("Invalid id");
+        rs.setData(null);
+
+        return new ResponseEntity<>(rs,HttpStatus.BAD_REQUEST);
+    }
 }

@@ -12,4 +12,10 @@ public interface EmployeeService {
     Employee save(Employee employee);
 
     List<Employee> findAll();
+
+    Optional<Employee> findById(Integer id);
+
+    Employee update(Employee employee);
+
+    String delete(Integer id);
 }
