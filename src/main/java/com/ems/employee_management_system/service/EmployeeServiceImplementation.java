@@ -6,6 +6,9 @@ import com.ems.employee_management_system.exceptions.NameNullException;
 import com.ems.employee_management_system.responseformat.ResponseStructure;
 import com.fasterxml.jackson.annotation.OptBoolean;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -28,8 +31,9 @@ public class EmployeeServiceImplementation implements EmployeeService{
     }
 
     @Override
-    public List<Employee> findAll() {
-        return employeeDao.findAll();
+    public Page<Employee> findAll(int page, int size) {
+        Pageable pg= PageRequest.of(page,size);
+        return employeeDao.findAll(pg);
     }
 
     @Override

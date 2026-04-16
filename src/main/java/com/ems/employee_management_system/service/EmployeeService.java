@@ -2,6 +2,7 @@ package com.ems.employee_management_system.service;
 
 import com.ems.employee_management_system.entity.Employee;
 import com.ems.employee_management_system.responseformat.ResponseStructure;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -11,7 +12,7 @@ public interface EmployeeService {
 
     Employee save(Employee employee);
 
-    List<Employee> findAll();
+    Page<Employee> findAll(int page, int size);
 
     Optional<Employee> findById(Integer id);
 

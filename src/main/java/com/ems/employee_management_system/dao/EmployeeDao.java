@@ -4,6 +4,8 @@ import com.ems.employee_management_system.entity.Employee;
 import com.ems.employee_management_system.repository.EmployeeRepo;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,8 +21,8 @@ public class EmployeeDao {
         return employeeRepo.save(employee);
     }
 
-    public List<Employee> findAll(){
-        return employeeRepo.findAll();
+    public Page<Employee> findAll(Pageable page){
+        return employeeRepo.findAll(page);
     }
 
     public Optional<Employee> find(Integer id){
